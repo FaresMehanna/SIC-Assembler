@@ -17,7 +17,7 @@ or
 ```
 
 
-### Supported Directive
+### Supported Directives
 
 * START
 * END
