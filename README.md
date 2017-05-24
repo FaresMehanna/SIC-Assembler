@@ -1,6 +1,8 @@
 # SIC-Assembler
 
-## To Compile :
+
+
+###	 To Compile :
 ```
 gcc main.c -o sic
 ```
@@ -16,40 +18,40 @@ or
 
 ### Supportive Directive
 
-*START
-*END
-*RESW
-*RESB
-*WORD
-*BYTE
-*EQU
-*ORG
-*LTORG
+* START
+* END
+* RESW
+* RESB
+* WORD
+* BYTE
+* EQU
+* ORG
+* LTORG
 
 ### Supported Operations
 
-*LDA
-*STA
-*ADD
-*AND
-*COMP
-*DIV
-*J
-*JEQ
-*JGT
-*JLT
-*JSUB
-*LDCH
-*LDL
-*LDX
-*MUL
-*OR
-*RD
-*RSUB
-*STCH
-*STL
-*STX
-*SUB
-*TD
-*TIX
-*WD
+* LDA
+* STA
+* ADD
+* AND
+* COMP
+* DIV
+* J
+* JEQ
+* JGT
+* JLT
+* JSUB
+* LDCH
+* LDL
+* LDX
+* MUL
+* OR
+* RD
+* RSUB
+* STCH
+* STL
+* STX
+* SUB
+* TD
+* TIX
+* WD
