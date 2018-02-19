@@ -31,29 +31,18 @@ void Pass2(assemblerData* programData){
 	files file;		//file struct that will be handled to each operationFunction
 
 	int len = strlen(iodata->outputFile);
-	char str[len+5];
-	memcpy(str,iodata->outputFile,len);
 
 	//open the first file and validate it
-	str[len] = '.';
-	str[len+1] = 'o';
-	str[len+2] = 'b';
-	str[len+3] = 'j';
-	str[len+4] = '\0';
+	char str[len+5];
+	strcpy(str,".obj");
 	file.obj = fopen(str,"w");
     assert(file.obj != NULL);
 
-	char str2[len+5];
-	memcpy(str2,iodata->outputFile,len);
 	//open the second file and validate it
-	str2[len] = '.';
-	str2[len+1] = 'l';
-	str2[len+2] = 'o';
-	str2[len+3] = 'c';
-	str2[len+4] = '\0';
+	char str2[len+5];
+	strcpy(str2,".loc");
 	file.loc = fopen(str2,"w");
     assert(file.loc != NULL);
-
 
     int newPc = 0;
     int x = 1;

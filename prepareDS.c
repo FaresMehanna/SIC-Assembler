@@ -41,7 +41,7 @@ static void FreeInstruction(void* f1){
 	free(x);
 }
 //prepare the operationshashset
-static inline void PrepareOperationsHashSet(HashSetChain* operations){
+void PrepareOperationsHashSet(HashSetChain* operations){
 
 	InitializeHashSetChain(operations,sizeof(OberationFunction*),sizeof(char*),
 		cmphash,NULL,freeHash,hash);
@@ -190,7 +190,7 @@ static inline void PrepareOperationsHashSet(HashSetChain* operations){
 }
 
 //prepare the Parts Hashset
-static inline void PreparePartsHashSet(HashSetChain* parts){
+void PreparePartsHashSet(HashSetChain* parts){
 
 	InitializeHashSetChain(parts,sizeof(char*),sizeof(int),
 		cmpInt,freeHash,NULL,hashParts);
@@ -221,15 +221,15 @@ static inline void PreparePartsHashSet(HashSetChain* parts){
 	
 }
 
-static inline void PreparelabelsHashSet(HashSetChain* labels){
+void PreparelabelsHashSet(HashSetChain* labels){
 	InitializeHashSetChain(labels,sizeof(int),sizeof(char*),cmphash,NULL,freeHash,hash);
 }
 
-static inline void PrepareliteralsHashSet(HashSetChain* literals){
+void PrepareliteralsHashSet(HashSetChain* literals){
 	InitializeHashSetChain(literals,sizeof(int),sizeof(char*),cmphash,NULL,freeHash,hash);
 }
 
-static inline void cleanUp(HashSetChain* operations,
+void cleanUp(HashSetChain* operations,
  HashSetChain* labels, HashSetChain* Parts, SlinkedList* insts
 , SlinkedList* laterLines, SlinkedList* lines){
 	DisposeSLinkedList(laterLines);
@@ -241,17 +241,17 @@ static inline void cleanUp(HashSetChain* operations,
 }
 
 //initialize the LinkedList
-static inline void prepareInstructionsLinkedList(SlinkedList* insts){
+void prepareInstructionsLinkedList(SlinkedList* insts){
 	InitializeSLinkedList(insts,sizeof(instruction*),FreeInstruction);
 }
 
 //initialize the LinkedList
-static inline void preparelaterLinkedList(SlinkedList* laterLines){
+void preparelaterLinkedList(SlinkedList* laterLines){
 	InitializeSLinkedList(laterLines,sizeof(char*),freeHash);
 }
 
 //initialize the LinkedList
-static inline void preparelinesLinkedList(SlinkedList* lines){
+void preparelinesLinkedList(SlinkedList* lines){
 	InitializeSLinkedList(lines,sizeof(char*),freeHash);
 }
 

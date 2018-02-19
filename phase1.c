@@ -82,7 +82,7 @@ static inline void SolveLabel(line* y,
 //will add pointer to the function corrosponding to the OpCode if found
 //will end the execution with error message if the operation wasn't found
 //will end the execution with error message if the operation's Function wasn't found
-static inline void SolveOberation(line* y, instruction* x,
+static inline void SolveOperation(line* y, instruction* x,
  HashSetChain* operations,passData* passdata){
 
 	int start = 0;
@@ -118,9 +118,9 @@ static inline void SolveOberation(line* y, instruction* x,
 	free(opCode);
 }
 
-//will get the oberands of the instruction if found
+//will get the operands of the instruction if found
 //will fix the operand format and add it to the instruction
-static inline void SolveOberands(line* y, instruction* x){
+static inline void SolveOperands(line* y, instruction* x){
 	
 	int start = 0;
 	int end = 17;
@@ -209,8 +209,8 @@ static inline instruction* SolveInstruction(char* inst,passData* passdata, int n
 
 
 	ValidateBlank(y,passdata);					//validate blanks
-	SolveOberation(y,x,operations,passdata);		//get pointer to the handler function to the opCode
-	SolveOberands(y,x);					//get the oberands and fix the format
+	SolveOperation(y,x,operations,passdata);		//get pointer to the handler function to the opCode
+	SolveOperands(y,x);					//get the oberands and fix the format
 	Finsh(x,passdata,1);				//call the given function with opNum = 1, //Directives
 	SolveLabel(y,labels,*ProgramCounter,passdata);				//add the label with current PC
 	x->loc = *ProgramCounter;			//set the location inside the instruction to current PC
@@ -221,7 +221,6 @@ static inline instruction* SolveInstruction(char* inst,passData* passdata, int n
 
 //read the data from the file
 //create instruction Struct for every Line in the file
-//add them all to linkedlist
 void Pass1(assemblerData* programData){
 
 	//local pointers to the Data
@@ -309,7 +308,7 @@ void Pass1(assemblerData* programData){
 	//if end isn't the last sentence stop execution and yield an error
 	if(!*end){
 		messagesHandler(newMessage(ERROR_,NOTERMINATE_,PASS1_,
-			strdup("END instruction mustbe the last instruction in your code")),passdata,1);
+			strdup("END instruction must be the last instruction in your code")),passdata,1);
 		println();
 	}
 	

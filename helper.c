@@ -1,4 +1,4 @@
-static inline char* strConcat(const char *s1, const char *s2){
+char* strConcat(const char *s1, const char *s2){
     char *result = malloc(strlen(s1)+strlen(s2)+1);
     assert(result != NULL);
 
@@ -7,7 +7,7 @@ static inline char* strConcat(const char *s1, const char *s2){
     return result;
 }
 
-static inline char* charConcat(char *s1, const char s2){
+char* charConcat(char *s1, const char s2){
     char *result = malloc(strlen(s1)+2);
     assert(result != NULL);
 
@@ -19,13 +19,13 @@ static inline char* charConcat(char *s1, const char s2){
     return result;
 }
 
-static inline char* emptyString(){
+char* emptyString(){
 	char* empty = malloc(sizeof(char));
 	empty[0] = '\0';
 	return empty;
 }
 
-static inline int strEqual(const char *s1, const char *s2)
+int strEqual(const char *s1, const char *s2)
 {
 	if(strlen(s1) != strlen(s2))
 		return 0;
@@ -40,7 +40,7 @@ static inline int strEqual(const char *s1, const char *s2)
 	return 1;
 }
 
-static inline message newMessage(int type,int terminate, int from, char* toWrite){
+message newMessage(int type,int terminate, int from, char* toWrite){
 	
 	message x;
 
@@ -52,7 +52,7 @@ static inline message newMessage(int type,int terminate, int from, char* toWrite
 	return x;
 }
 
-static inline void errorEnd(int num, passData* passdata){
+void errorEnd(int num, passData* passdata){
 	cleanUp(&(passdata->operations),
 		&(passdata->labels),
 		&(passdata->parts),
@@ -62,11 +62,11 @@ static inline void errorEnd(int num, passData* passdata){
 	exit(num);
 }
 
-static inline void println(){
+void println(){
 	printf("\n");
 }
 
-static inline void messagesHandler(message x, passData* y, int freeIt){
+void messagesHandler(message x, passData* y, int freeIt){
 
 	char* from;
 
@@ -101,7 +101,7 @@ static inline void messagesHandler(message x, passData* y, int freeIt){
 		free(x.message);
 }
 
-static inline int locateString(const char *s1, int len, int* outstart, int* outend){
+int locateString(const char *s1, int len, int* outstart, int* outend){
 	int start = 0;
 	int end = len-1;
 	int exist = 0;
@@ -128,19 +128,19 @@ static inline int locateString(const char *s1, int len, int* outstart, int* oute
 	return exist;
 }
 
-static inline char bg(char chr){
+char bg(char chr){
 	if(chr >= 'a' && chr <= 'z')
 		return chr - 'a' + 'A';
 	return chr;
 }
 
-static inline char sml(char chr){
+char sml(char chr){
 	if(chr >= 'A' && chr <= 'Z')
 		return chr - 'A' + 'a';
 	return chr;
 }
 
-static inline char* sbg(char* str){
+char* sbg(char* str){
 	
 	int len = strlen(str);
 	for(int i=0;i<len;i++)
@@ -149,7 +149,7 @@ static inline char* sbg(char* str){
 	return str;
 }
 
-static inline char* ssml(char* str){
+char* ssml(char* str){
 	
 	int len = strlen(str);
 	for(int i=0;i<len;i++)
@@ -158,7 +158,7 @@ static inline char* ssml(char* str){
 	return str;
 }
 
-static inline int checkPosHex(char* hex){
+int checkPosHex(char* hex){
 	
 	int len = strlen(hex);
 
@@ -173,7 +173,7 @@ static inline int checkPosHex(char* hex){
 	return 1;
 }
 
-static inline int checkHex(char* hex){
+int checkHex(char* hex){
 	
 	int len = strlen(hex);
 
@@ -191,7 +191,7 @@ static inline int checkHex(char* hex){
 	return 1;
 }
 
-static inline int checkSignNum(char* hex){
+int checkSignNum(char* hex){
 	
 	int len = strlen(hex);
 
@@ -207,7 +207,7 @@ static inline int checkSignNum(char* hex){
 	return 1;
 }
 
-static inline int checkNum(char* hex){
+int checkNum(char* hex){
 	
 	int len = strlen(hex);
 
@@ -220,7 +220,7 @@ static inline int checkNum(char* hex){
 	return 1;
 }
 
-static inline void validateParameters(int argc, char* argv[],assemblerData* x){
+void validateParameters(int argc, char* argv[],assemblerData* x){
 
 	char* in = "-i";
 	char* out = "-o";
@@ -252,7 +252,7 @@ static inline void validateParameters(int argc, char* argv[],assemblerData* x){
 	,&(x->passdata),1);
 }
 
-static inline int offSet10(long x){
+int offSet10(long x){
 	int len = 1;
 	int k =1;
 
@@ -264,7 +264,7 @@ static inline int offSet10(long x){
 	return len;
 }
 
-static inline int offSet(long x){
+int offSet(long x){
 	int len = 1;
 	int k =1;
 
